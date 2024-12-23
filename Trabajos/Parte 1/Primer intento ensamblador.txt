@@ -1,0 +1,52 @@
+;Prólogo
+
+mov eax, 4A35h ; Guarda en eax el valor 303157 en hexadecimal
+
+push ebp
+mov ebp, esp ; coloca el puntero esp (r7) en la posición de ebp (r6)
+
+; Salvaguarda de registros
+
+push ecx ; apilamos el primer registro (el de i1
+push edx ; apilamos el segundo registro (el de i2
+push esi ; apilamos el tercer registro (el de i3
+
+; Cuerpo del procedimiento
+
+mov edi, [ebp + 8] ; Acceso al parámetro ... movemos ebp (r6) para que apunte a ebx
+;................................................................................................
+xor edx,esi ; Operación xor sobre el segundo y tercer operando
+
+cmp eax, edx
+
+js primera_comprobacion
+jmp nada
+
+;..................................................................................................
+primera_comprobacion:
+
+jmp segunda_comprobacion
+
+;......................................................................................................
+segunda_comprobacion:
+
+mov ebx, 00B0h
+
+
+cmp cl, bl
+ja final
+;.........................................................................................................
+
+final:
+ret 1h
+
+pop ecx
+pop edx
+pop esi
+
+nada:
+ret 0h
+
+pop ecx
+pop edx
+pop esi

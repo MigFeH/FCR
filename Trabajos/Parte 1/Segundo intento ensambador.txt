@@ -1,0 +1,34 @@
+IsValidAssembly PROC, num1: DWORD, num2:DWORD, num3:DWORD
+
+mov eax, num1
+mov ebx, num2
+mov ecx, num3
+
+and eax,0000000FFh ; a con solo los 8 primeros bits
+xor ebx,ecx ; funcion xor con b y c
+
+mov ebx, 0B0h ; en ebx esta 176
+mov ecx, 4A035h ; en ecx esta 303157
+
+cmp eax,edx   ; compara los 8 bits de a y 176
+jg continuar
+jmp invalido
+
+continuar:
+cmp ebx, ecx ; compara xor de b y c con 303157
+je correcto
+jmp invalido
+
+invalido:
+push 0 
+pop eax
+ret         ; retorna 0 si llega a invalido. LLega si no se cumple una de las condiciones
+
+correcto:
+push 1
+pop eax 
+ret         ; retorna 1 si llega a correcto. LLega si cumple las 2 condiciones.
+
+IsValidAssembly ENDP
+
+END
