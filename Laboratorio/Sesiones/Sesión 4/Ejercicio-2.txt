@@ -1,0 +1,27 @@
+Ejercicio 2. Convierte al ensamblador del Computador Teórico el siguiente fragmento de código, 
+suponiendo que la variable c está almacenada en el registro r1.
+
+c=65;   // Con c en r1
+
+Observa que en el código C++ el dato introducido se da en base 10.
+A la hora de escribirlo en ensamblador puedes darlo también en base 10, o en hexadecimal,
+como prefieras. 
+En este segundo caso deberás añadir una h al final del dato en el listado ensamblador.
+Sin embargo, el simulador web te hará el volcado de los registros siempre en hexadecimal.
+Comprueba que tras la ejecución del programa, el registro r1 contiene el valor 0041h (hexadecimal).
+
+
+
+
+
+65 en base 10 => 41 en base 16
+
+
+
+
+
+
+
+
+
+

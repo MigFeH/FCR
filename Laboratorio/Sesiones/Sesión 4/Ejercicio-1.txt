@@ -1,0 +1,16 @@
+Ejercicio 1. Traduce al ensamblador del Computador Teórico la siguiente asignación en C++. 
+Cada variable se almacena en un registro, indicado en el comentario.
+
+a=b;    // Con a en r3,  b en r5
+
+Para probar tu código, pon en el simulador web un valor inicial de 7 al registro r5.
+Comprueba que, tras ejecutar el código, el registro r3 adquiere también el valor 7.
+
+
+mov r3, r5
+
+
+
+
+
+
