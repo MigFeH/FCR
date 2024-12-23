@@ -1,0 +1,45 @@
+; Este programa debe leer del dispositivo Switch1 el estado de los interruptores 
+; y mostrarlo en los leds del dispositivo Switch2.
+
+ORIGEN 7E00h
+INICIO main
+.PILA 20h
+
+.CODIGO
+main:
+
+	; El programa principal instala la rutina de interrupción
+	; y activa las interrupciones. 
+
+	;--- Hueco a rellenar por el programa principal ---
+	MOVL  R0, 13h  ; Vector a modificar
+	MOVH  R0, 00h
+	MOVL  R1, BYTEBAJO DIRECCION serviceRoutine1
+	MOVH  R1, BYTEALTO DIRECCION serviceRoutine1
+	MOV [R0], R1
+	STI       ; Permitir interrupciones
+
+PorSiempre:
+	JMP PorSiempre
+Procedimiento serviceRoutine1
+	; La rutina de interrupción lee el estado de los interruptores del dispositivo Switch1
+	; y lo muestra en los leds del dispositivo Switch2
+
+	;--- Hueco a rellenar por la rutina de servicio ---
+	PUSH R0
+	PUSH R1
+	
+	MOVL R0, 50h
+	MOVH R0, 0FAh ; R0 = dir. luces1
+	MOVL R1, 30h
+	MOVH R1, 0EBh ; R1 = dir. luces2
+	MOV R2, [R0] 
+	MOV [R1], R2  ; Mover el estado de luces1 al 2
+	
+	POP R1
+	POP R0
+	
+	IRET
+FINP
+
+FIN

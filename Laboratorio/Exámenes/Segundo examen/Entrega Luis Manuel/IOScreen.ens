@@ -1,0 +1,53 @@
+; Este programa debe escribir el carácter '#' en la columna 7  de la pantalla 
+;(la pantalla tiene 15 columnas numeradas de 0 a 14) en color Verde sobre fondo Magenta 
+; la etiqueta Addr_1stChar indica la dirección en la que se encuentra el primer carácter
+; de la columna 7  de la primera fila de la pantalla.
+
+ORIGEN 0500h
+INICIO main
+.PILA 20h
+.DATOS
+Addr_1stChar valor 0F007h
+
+.CODIGO
+
+Procedimiento showChar
+	; El procedimiento recibe dos parámetros:
+	;  - La dirección de la pantalla en la que hay que mostrar el carácter
+	;  - El carácter + el atributo con el que hay que presentarlo
+	;El procedimiento saca a pantalla el carácter en la dirección indicada.
+
+	;--- Hueco a rellenar por el procedimiento ---
+    MOV [R0], R4
+	RET
+FINP
+
+main:
+
+	; El programa principal calcula la posición y el atributo del carácter
+	; a mostrar y llama a showChar 8 veces para mostrarlo en pantalla. 
+
+	;--- Hueco a rellenar por el programa principal ---
+	MOVL R0, BYTEBAJO DIRECCION Addr_1stChar; R0 = dir. de la direccion pantalla
+	MOVH R0, BYTEALTO DIRECCION Addr_1stChar
+	MOV R0, [R0]; R0 = dir. pantalla
+	MOVL R1, 0Fh
+    MOVH R1, 00h; R1 = 14 
+	MOVl R4, '*'; R1 = *
+    MOVH R4, 2Ah; R1 = * verde sobre magenta	
+	XOR R2, R2, R2; R2 = 0
+	MOVL R3, 08h
+	MOVH R3, 00h; R3 = 8
+	
+bucle:
+	CMP R2, R3; R2 >= R3?
+	BRNC final 
+	CALL showChar
+	ADD R0, R0, R1; R0 = dir. pantalla + 14 
+	
+	INC R2
+	JMP bucle
+	
+final:
+	
+FIN
