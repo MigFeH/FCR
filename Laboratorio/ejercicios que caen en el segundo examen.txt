@@ -1,0 +1,5 @@
+3 ejercicios
+
+1- comandos de windows
+2- otro de packet traker (6.1 y 6.5)
+3- wireshark (6.2, 6.3, 6.5) [ESTE ES IMPORTANTE]
